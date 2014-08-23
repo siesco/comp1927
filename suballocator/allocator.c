@@ -131,6 +131,12 @@ static void *traversal(int n) {
       }
       free_list_ptr = detection->next;
       point = &(memory[detection->next]);
+
+      header checker = (header)point;
+
+      // incase there are no more regions
+      if(checker->magic == MAGIC_ALLOC) break;
+
    } while (point != tmp);
 
    return NULL;
